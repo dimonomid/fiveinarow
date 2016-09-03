@@ -10,6 +10,10 @@ const (
 	rowsCnt = 4
 )
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 type value int64
 
 type valuable interface {
@@ -181,7 +185,6 @@ func (b *Board) EvaluateAllPos(ownType PointType) positions {
 		}
 	}
 
-	rand.Seed(time.Now().UnixNano())
 	for i := range positions {
 		j := rand.Intn(i + 1)
 		positions[i], positions[j] = positions[j], positions[i]
